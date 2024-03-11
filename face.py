@@ -88,10 +88,9 @@ class Face:
         x_intersecao = x1 + t * delta_x
         y_intersecao = y1 + t * delta_y
         z_intersecao = z1 + t * delta_z
-        
         return x_intersecao, y_intersecao, z_intersecao
 
-    def get_point_of_face(self):
+    def get_point_in_face(self):
         v1 = []
         for i in range(3):
             v1.append((self.vertices[0][i] + self.vertices[2][i])/2)
