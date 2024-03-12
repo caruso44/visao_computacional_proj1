@@ -99,8 +99,10 @@ class Face:
 
     def draw_line_projective(self, directoy):
         with open(directoy, 'a') as arquivo:
+            aux = 0
             for i in range(4):
-                for j in range(i + 1, 4):
+                for j in range(4):
+                    aux += 1
                     v1 = self.vertices[i]
                     v2  = self.vertices[j]
                     if(np.linalg.norm(np.array(v1) - np.array(v2)) < 0.7): 
@@ -108,4 +110,3 @@ class Face:
                         v2 = self.calculate_intersection(v2)
                         arquivo.write('line\n')
                         arquivo.write(f'{v1[0]} {v1[2]} {v2[0]} {v2[2]}\n')
-    

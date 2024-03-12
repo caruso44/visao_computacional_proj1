@@ -6,7 +6,7 @@ class Cube:
     def __init__(self, theta1, theta2, theta3, direc) -> None:
         self.dir = direc
         self.faces = []
-        self.foco = np.array([0,1000,0])
+        self.foco = np.array([0,1,0])
         self.faces.append(Face(theta1, theta2, theta3, [0, 1, 5, 4],-1, self.foco))
         self.faces.append(Face(theta1, theta2, theta3, [5, 7, 6, 4],-1, self.foco))
         self.faces.append(Face(theta1, theta2, theta3, [2, 3, 6, 7],1, self.foco))
@@ -30,7 +30,7 @@ class Cube:
 
     def draw_frame_with_oclusion(self, frame_rate):
         for face in self.faces:
-            if np.dot(np.array(face.normal), np.array(self.foco)) > 0:
+            if np.dot(np.array(face.normal), np.array((0,1,0))) > 0:
                 face.draw_line(self.dir)
         with open(self.dir, 'a') as arquivo:
             arquivo.write(f'delay\n' + str(1/frame_rate) + '\nclrscr\nend')
